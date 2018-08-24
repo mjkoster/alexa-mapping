@@ -1,0 +1,115 @@
+{
+     "endpointId": "endpoint-002",
+     "manufacturerName": "Sample Manufacturer",
+     "friendlyName": "Light",
+     "description": "002 Light that is dimmable and can change color and color temperature",
+     "displayCategories": [
+         "LIGHT"
+     ],
+     "cookie": {},
+     "capabilities": [
+         {
+             "type": "AlexaInterface",
+             "interface": "Alexa",
+             "version": "3"
+         },
+         {
+             "type": "AlexaInterface",
+             "interface": "Alexa.PowerController",
+             "version": "3",
+             "properties": {
+                 "supported": [
+                     {
+                         "name": "powerState"
+                     }
+                 ],
+                 "proactivelyReported": true,
+                 "retrievable": true
+             }
+         },
+         {
+             "type": "AlexaInterface",
+             "interface": "Alexa.ColorController",
+             "version": "3",
+             "properties": {
+                 "supported": [
+                     {
+                         "name": "color"
+                     }
+                 ],
+                 "proactivelyReported": true,
+                 "retrievable": true
+             }
+         },
+         {
+             "type": "AlexaInterface",
+             "interface": "Alexa.ColorTemperatureController",
+             "version": "3",
+             "properties": {
+                 "supported": [
+                     {
+                         "name": "colorTemperatureInKelvin"
+                     }
+                 ],
+                 "proactivelyReported": true,
+                 "retrievable": true
+             }
+         },
+         {
+             "type": "AlexaInterface",
+             "interface": "Alexa.BrightnessController",
+             "version": "3",
+             "properties": {
+                 "supported": [
+                     {
+                         "name": "brightness"
+                     }
+                 ],
+                 "proactivelyReported": true,
+                 "retrievable": true
+             }
+         },
+         {
+             "type": "AlexaInterface",
+             "interface": "Alexa.PowerLevelController",
+             "version": "3",
+             "properties": {
+                 "supported": [
+                     {
+                         "name": "powerLevel"
+                     }
+                 ],
+                 "proactivelyReported": true,
+                 "retrievable": true
+             }
+         },
+         {
+             "type": "AlexaInterface",
+             "interface": "Alexa.PercentageController",
+             "version": "3",
+             "properties": {
+                 "supported": [
+                     {
+                         "name": "percentage"
+                     }
+                 ],
+                 "proactivelyReported": true,
+                 "retrievable": true
+             }
+         },
+         {
+             "type": "AlexaInterface",
+             "interface": "Alexa.EndpointHealth",
+             "version": "3",
+             "properties": {
+                 "supported": [
+                     {
+                         "name": "connectivity"
+                     }
+                 ],
+                 "proactivelyReported": true,
+                 "retrievable": true
+             }
+         }
+     ]
+ },

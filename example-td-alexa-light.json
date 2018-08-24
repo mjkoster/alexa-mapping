@@ -1,0 +1,96 @@
+{
+  "@context": ["http://www.w3.org/ns/td",
+  		{"iot": "http://iot.schema.org/smarthome/"}],
+  "@type" : ["Thing","iot:BinarySwitch","iot:LevelControl","iot:ColorControl"],
+  "id": "586fdf82-e0d8-4af2-93b0-9704cb614e98",
+  "name": "Example Light",
+  "description" : "Example Thing exposed by an Alexa Skill",
+  "security": [{"scheme": "oauth2"}],
+  "properties": {
+    "hue": {
+      "@type": ["iot:Hue","iot:HueData"],
+      "type": "number",
+      "minimum": 0,
+      "maximum": 360
+    },
+    "saturation": {
+      "@type": ["iot:Saturation","iot:SaturationData"],
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "brightness": {
+      "@type": ["iot:Level","iot:LevelData"],
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "state": {
+      "type": "object"
+    }
+  },
+  "actions": {
+    "setColor": {
+      "@type" : "iot:setColor",
+      "input": {
+        "description": "From the Alexa message request schema",
+        "type": "object",
+        "properties": {
+          "directive": {
+            "type": "object",
+            "properties": {
+              "payload": {
+                "type": "object",
+                "properties": {
+                  "color": {
+                    "type": "object",
+                    "type": "iot:ColorMap",
+                    "properties": {
+                      "hue": {
+                        "@type": ["iot:Hue","iot:HueData"],
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 360
+                      },
+                      "saturation": {
+                        "@type": ["iot:Saturation","iot:SaturationData"],
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1
+                      },
+                      "brightness": {
+                        "@type": ["iot:Level","iot:LevelData"],
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "forms": [{
+          "href": "https://example.com/api/v3/requests",
+          "http:methodName": "POST",
+          "mediaType": "application/json"
+      }]
+    }
+  },
+  "events": {
+    "responses": {
+      "description" : "Responses from Directives",
+      "type": "object",
+    },
+    "statereport": {
+      "description" : "Reports from State Request",
+      "type": "object",
+    },
+    "changereport": {
+      "description" : "Proactive Reports",
+      "type": "object",
+    }
+  }
+}

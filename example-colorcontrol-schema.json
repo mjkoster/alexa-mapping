@@ -1,0 +1,124 @@
+"@context": { "iot": "http:/iot.schema.org/smarthome" },
+"ColorController": {
+    "color": {
+        "property": {
+            "@type": "iot:ColorMap",
+            "type": "object",
+            "required": [
+                "namespace",
+                "name",
+                "value",
+                "timeOfSample",
+                "uncertaintyInMilliseconds"
+            ],
+            "additionalProperties": false,
+            "properties": {
+                "namespace": {
+                    "enum": [
+                        "Alexa.ColorController"
+                    ]
+                },
+                "name": {
+                    "enum": [
+                        "color"
+                    ]
+                },
+                "value": {
+                    "type": "object",
+                    "required": [
+                        "hue",
+                        "saturation",
+                        "brightness"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                        "hue": {
+                            "@type": "iot:HueData",
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 360
+                        },
+                        "saturation": {
+                            "@type": "iot:SaturationData",
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1
+                        },
+                        "brightness": {
+                            "@type": "iot:LevelData",
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1
+                        }
+                    }
+                },
+                "timeOfSample": {
+                    "$ref": "#/definitions/common.properties/timestamp"
+                },
+                "uncertaintyInMilliseconds": {
+                    "$ref": "#/definitions/common.properties/uncertaintyInMilliseconds"
+                }
+            }
+        }
+    },
+    "capabilities": {
+        "type": "object",
+        "@type": "iot:ColorControl",
+        "required": [
+            "type",
+            "interface",
+            "version"
+        ],
+        "additionalProperties": false,
+        "properties": {
+            "type": {
+                "enum": [
+                    "AlexaInterface"
+                ]
+            },
+            "interface": {
+                "enum": [
+                    "Alexa.ColorController"
+                ]
+            },
+            "version": {
+                "$ref": "#/definitions/common.properties/version"
+            },
+            "properties": {
+                "type": "object",
+                "required": [
+                    "supported",
+                    "proactivelyReported",
+                    "retrievable"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                    "supported": {
+                        "type": "array",
+                        "uniqueItems": true,
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "name"
+                            ],
+                            "additionalProperties": false,
+                            "properties": {
+                                "name": {
+                                    "enum": [
+                                        "color"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "proactivelyReported": {
+                        "type": "boolean"
+                    },
+                    "retrievable": {
+                        "type": "boolean"
+                    }
+                }
+            }
+        }
+    }
+},
